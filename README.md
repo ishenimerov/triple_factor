@@ -12,21 +12,6 @@ authentication factors** before issuing a session:
 After all three succeed, the server issues a **JWT** that authorises access to
 protected routes (the "feed").
 
-> Full write-up, diagrams and security analysis: [docs/REPORT.md](docs/REPORT.md)
-
----
-
-## Architecture
-
-```
-frontend/  React + Vite  ──HTTP──►  backend/  Node + Express
-  │  Web Crypto (private key)          │  bcryptjs, jsonwebtoken, nodemailer
-  │  stores private key locally        │  JSON-file store (data/db.json)
-  └────────────────────────────────────┘
-```
-
-Nothing native is compiled — the project runs anywhere Node 18+ is installed.
-
 ## Prerequisites
 
 - **Node.js 18 or newer** (developed on Node 20). Check with `node --version`.
@@ -117,7 +102,6 @@ frontend/
   src/App.jsx               multi-step login wizard
   src/crypto.js             Web Crypto keygen + challenge signing
   src/api.js                API client
-docs/REPORT.md              academic report
 ```
 
 ## Security notes (see the report for detail)
@@ -129,5 +113,3 @@ docs/REPORT.md              academic report
 - Progress between factors is carried in short-lived signed **stage tokens**, so
   a client cannot skip a factor.
 
-This is an educational project. See the report's *Limitations* section before
-reusing any of it in production.
