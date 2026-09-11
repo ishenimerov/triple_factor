@@ -128,6 +128,3 @@ docs/REPORT.md              academic report
 - Challenges are single-use random nonces with a 5-minute expiry.
 - Progress between factors is carried in short-lived signed **stage tokens**, so
   a client cannot skip a factor.
-
-This is an educational project. See the report's *Limitations* section before
-reusing any of it in production.
